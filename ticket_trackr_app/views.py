@@ -12,6 +12,6 @@ class TestView(viewsets.ModelViewSet):
 
 
 def airport_list(request):
-    r = requests.get("https://api.flightstats.com/flex/airports/rest/v1/json/active?appId=86201515&appKey=d0224781a3d6153648f04251c97c3db7")
+    r = requests.get()
     data = r.json()
     return render(request, './templates/airports.html')
