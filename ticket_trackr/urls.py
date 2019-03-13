@@ -24,7 +24,7 @@ router.register(r'test', views.TestView, 'test')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    # path('token-auth/', obtain_jwt_token) for JWT Auth Stretch
+    path('airports/', include('ticket_trackr_app.urls'))
     
     
 ]
