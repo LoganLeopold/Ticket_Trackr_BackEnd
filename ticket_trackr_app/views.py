@@ -10,10 +10,6 @@ class TestView(viewsets.ModelViewSet):
     queryset = TestModel.objects.all()  
 
 
-# class AirportLIst(viewsets.ModelViewSet):
-#     serializer_class = AirportSerializer
-
-#     queryset = requests.get("https://api.flightstats.com/flex/airports/rest/v1/json/active?appId=86201515&appKey=d0224781a3d6153648f04251c97c3db7")
 
 def airport_list(request):
     r = requests.get("https://api.flightstats.com/flex/airports/rest/v1/json/active?appId=86201515&appKey=d0224781a3d6153648f04251c97c3db7")
