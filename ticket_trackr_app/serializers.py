@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import TestModel
+from .models import TestModel, AirportModel
 
 class TestSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,3 +9,4 @@ class TestSerializer(serializers.ModelSerializer):
 class AirportSerializer(serializers.ModelSerializer):
     class Meta:
         model = AirportModel
+        fields = ("fs", "faa", "name", "city", "stateCode", "countryCode", "countryName", "regionName", "timeZoneRegionName", "localTime", "utcOffsetHours", "latitude", "longitude", "elevationFeet", "classification", "active", "weatherUrl", "delayIndexUrl")

@@ -17,27 +17,23 @@ class TestModel(models.Model):
     # currency = models.TextField()
 
 class AirportModel(models.Model):
-    {
- "airports": [
-  {
-   fs = "00M",
-   faa = "00M",
-   name = "Thigpen",
-   city = "Bay Springs",
-   stateCode = "MS",
-   countryCode = "US",
-   countryName = "United States",
-   regionName = "North America",
-   timeZoneRegionName = "America/Chicago",
-   localTime = "2019-03-13T08:06:48.605",
-   utcOffsetHours = -5,
-   latitude = 31.987639,
-   longitude = -89.245056,
-   elevationFeet = 351,
-   classification = 5,
-   active = true,
-   weatherUrl = "https://api.flightstats.com/flex/weather/rest/v1/json/all/00M?codeType=fs",
-   delayIndexUrl = "https://api.flightstats.com/flex/delayindex/rest/v1/json/airports/00M?codeType=fs"
-  },
+   fs = models.TextField(),
+   faa = models.TextField(),
+   name = models.TextField(),
+   city = models.TextField(),
+   stateCode = models.TextField(),
+   countryCode = models.TextField(),
+   countryName = models.TextField(),
+   regionName = models.TextField(),
+   timeZoneRegionName = models.TextField(),
+   localTime = models.DateTimeField(),
+   utcOffsetHours = models.IntegerField(),
+   latitude = models.FloatField(),
+   longitude = models.FloatField(),
+   elevationFeet = models.IntegerField(),
+   classification = models.IntegerField(),
+   active = models.BooleanField(),
+   weatherUrl = models.URLField(),
+   delayIndexUrl = models.URLField()
 
 
