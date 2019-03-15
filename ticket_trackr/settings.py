@@ -27,13 +27,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 SECRET_KEY = environ.get('TICKET_TRACKR_SECRET_KEY')
+
 SKY_SCAN_KEY = environ.get('SKY_SCAN_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://tickettrackr.herokuapp.com/']
 
 
 # Application definition
