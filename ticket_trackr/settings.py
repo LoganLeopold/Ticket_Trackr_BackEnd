@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # config = RawConfigParser()
 # config.read('.settings.ini')
 
-# SECRET_KEY = config.get('secrets', 'TICKET_TRACKR_SECRET_KEY')
 
 SECRET_KEY = environ.get('TICKET_TRACKR_SECRET_KEY')
+SKY_SCAN_KEY = environ.get('SKY_SCAN_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
