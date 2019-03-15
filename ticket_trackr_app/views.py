@@ -16,6 +16,7 @@ airportKey = os.environ.get('airportKey')
 airportAppId = os.environ.get('airportAppId')
 SKY_SCAN = os.environ.get("SKY_SCAN_KEY")
 
+
 class TestView(viewsets.ModelViewSet):
     serializer_class = TestSerializer
     queryset = TestModel.objects.all()
@@ -34,34 +35,39 @@ def ListAirports(request):
     return JsonResponse(data)
 
 
-# def GetLivePrices(APIView):
-#     payload = {
-#         "inboundDate": "2019-04-08",
-#         "cabinClass": "business",
-#         "children": 0,
-#         "infants": 0,
-#         "country": "US",
-#         "currency": "USD",
-#         "locale": "en-US",
-#         "originPlace": "SFO-sky",
-#         "destinationPlace": "LHR-sky",
-#         "outboundDate": "2019-04-04",
-#         "adults": 1
-#     }
+def GetLivePrices(request):
 
-#     headers = {
-#         "X-RapidAPI-Key": "f{SKY_SCAN}",
-#         "Content-Type": "application/x-www-form-urlencoded"
-#     }
+    headers = {
+        'X-RapidAPI-Key': '{0}'.format(SKY_SCAN),
+        'Content-Type': 'application/x-www-form-urlencoded',
+    }
 
-#     print("f{SKY_SCAN}")
-#     response = requests.post("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0", params = payload, headers=headers)
+    data = {
+        'inboundDate': '2019-04-08',
+        'cabinClass': 'business',
+        'children': '0',
+        'infants': '0',
+        'country': 'US',
+        'currency': 'USD',
+        'locale': 'en-US',
+        'originPlace': 'SFO-sky',
+        'destinationPlace': 'LHR-sky',
+        'outboundDate': '2019-04-04',
+        'adults': '1'
+    }
 
-#     data = response.json()
+    
+    response = requests.post(
+        'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0', headers=headers, data=data)
 
 
-@api_view(('GET',))
-@renderer_classes((StaticHTMLRenderer,) )
-def simple_html_view(request):
-    data = "<h1>{0}<h1>".format(SKY_SCAN)
-    return Response(data)
+    head = response.headers['Location']
+
+    return JsonResponse(head)
+
+
+# @api_view(('GET',))
+# @renderer_classes((StaticHTMLRenderer,) )
+# def simple_html_view(request):
+#     data = "<h1>{0}<h1>".format(SKY_SCAN)
+#     return Response(data)
