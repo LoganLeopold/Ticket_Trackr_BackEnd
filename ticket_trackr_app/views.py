@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework import viewsets
+from rest_framework import renderers
+from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer, StaticHTMLRenderer
 from .serializers import TestSerializer, AirportSerializer
 from .models import TestModel, AirportModel
 import json
@@ -31,25 +34,34 @@ def ListAirports(request):
     return JsonResponse(data)
 
 
-def GetLivePrices(request):
-    paylod = {
-        "inboundDate": "2019-04-08",
-        "cabinClass": "business",
-        "children": 0,
-        "infants": 0,
-        "country": "US",
-        "currency": "USD",
-        "locale": "en-US",
-        "originPlace": "SFO-sky",
-        "destinationPlace": "LHR-sky",
-        "outboundDate": "2019-04-04",
-        "adults": 1
-    }
+# def GetLivePrices(APIView):
+#     payload = {
+#         "inboundDate": "2019-04-08",
+#         "cabinClass": "business",
+#         "children": 0,
+#         "infants": 0,
+#         "country": "US",
+#         "currency": "USD",
+#         "locale": "en-US",
+#         "originPlace": "SFO-sky",
+#         "destinationPlace": "LHR-sky",
+#         "outboundDate": "2019-04-04",
+#         "adults": 1
+#     }
 
-    headers = {
-        "X-RapidAPI-Key": "f{SKY_SCAN}",
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
+#     headers = {
+#         "X-RapidAPI-Key": "f{SKY_SCAN}",
+#         "Content-Type": "application/x-www-form-urlencoded"
+#     }
+
+#     print("f{SKY_SCAN}")
+#     response = requests.post("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0", params = payload, headers=headers)
+
+#     data = response.json()
 
 
-response = unirest.post("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0",
+@api_view(('GET',))
+@renderer_classes((StaticHTMLRenderer,) )
+def simple_html_view(request):
+    data = "<h1>{0}<h1>".format(SKY_SCAN)
+    return Response(data)
