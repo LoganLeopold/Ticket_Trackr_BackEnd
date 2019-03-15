@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
   path('', views.ListAirports),
-  path('skyscan', views.GetLivePrices)
+#   path('skyscan', views.GetLivePrices),
+#   path('skyscancollect', views.GetFormData)
 ]

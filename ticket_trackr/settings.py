@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
+import django_heroku
 from configparser import RawConfigParser
 import os
 from os import environ
@@ -133,3 +134,5 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_WHITELIST = (
          'localhost:3000/'
      )
+
+django_heroku.settings(locals())

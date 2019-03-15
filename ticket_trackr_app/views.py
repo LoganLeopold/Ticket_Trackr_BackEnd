@@ -25,8 +25,8 @@ class TestView(viewsets.ModelViewSet):
 def ListAirports(request):
 
     payload = (
-        ('appId', airportKey),
-        ('appKey', airportAppId),
+        ('appId', airportAppId),
+        ('appKey', airportKey),
     )
     response = requests.get(
         'https://api.flightstats.com/flex/airports/rest/v1/json/active', params=payload)
@@ -34,8 +34,13 @@ def ListAirports(request):
     data = response.json()
     return JsonResponse(data)
 
+# def GetFormData(request): 
+
+#     headers = {}
+
 
 def GetLivePrices(request):
+
 
     headers = {
         'X-RapidAPI-Key': '{0}'.format(SKY_SCAN),
@@ -61,9 +66,10 @@ def GetLivePrices(request):
         'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0', headers=headers, data=data)
 
 
-    head = response.headers['Location']
+    location = response.headers['Location']
+    data = response.json()
 
-    return JsonResponse(head)
+    return JsonResponse(head, safe=False)
 
 
 # @api_view(('GET',))
