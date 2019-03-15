@@ -24,7 +24,5 @@ router.register(r'test', views.TestView, 'test')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('airports/', include('ticket_trackr_app.urls'))
-    
-    
+    path('airports/', include('ticket_trackr_app.urls')),    
 ]
