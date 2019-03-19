@@ -32,7 +32,7 @@ def ListAirports(request):
         'https://api.flightstats.com/flex/airports/rest/v1/json/active', params=payload)
 
     data = response.json()
-    return JsonResponse(data, content_type='text/html')
+    return JsonResponse(data, safe=False,content_type='text/html')
 
 # def GetFormData(request): 
 
