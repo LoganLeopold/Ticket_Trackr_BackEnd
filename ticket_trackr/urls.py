@@ -34,7 +34,7 @@ urlpatterns = [
     path('airports/', include('ticket_trackr_app.urls')),    
 ]
 
-for route in react_routes:
-    urlpatterns += [
-        path('{}'.format(route), TemplateView.as_view(template_name='index.html'))
-    ]
+# for route in react_routes:
+#     urlpatterns += [
+#         path('{}'.format(route), TemplateView.as_view(template_name='index.html'))
+#     ]
