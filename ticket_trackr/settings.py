@@ -24,7 +24,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # config = RawConfigParser()
 # config.read('.settings.ini')
-    
 
 SECRET_KEY = environ.get('TICKET_TRACKR_SECRET_KEY')
 
@@ -144,3 +143,5 @@ CORS_ORIGIN_WHITELIST = (
      )
 
 django_heroku.settings(locals())
+
+#saved for working build 03/19/19 1:16pm
