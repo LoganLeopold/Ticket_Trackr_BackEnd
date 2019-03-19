@@ -139,8 +139,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = (
-         'https://ticket-trackr.surge.sh/',
-         'http://localhost:3000/'
+         'https://ticket-trackr.surge.sh/'
      )
 
 django_heroku.settings(locals())
