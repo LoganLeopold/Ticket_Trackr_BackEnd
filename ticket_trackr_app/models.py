@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+class CountryModel(models.Model):
+    Code = models.CharField(max_length=2)
+    Name = models.TextField()
+
 class TestModel(models.Model):
     name = models.CharField(max_length=100)
     test = models.TextField()

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-import django_heroku
+# import django_heroku
 from configparser import RawConfigParser
 import os
 from os import environ
@@ -26,14 +26,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # config.read('.settings.ini')
 
 SECRET_KEY = environ.get('TICKET_TRACKR_SECRET_KEY')
+RDS_USER = environ.get('rdsUser')
+RDS_PW = environ.get('rdsPassword')
+RDS_ENDPOINT = environ.get('rdsEndpoint')
 
-SKY_SCAN_KEY = environ.get('SKY_SCAN_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['https://tickettrackr.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -45,8 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',            
-    'rest_framework',  
+    'corsheaders',
+    'rest_framework',
     'ticket_trackr_app'
 ]
 
@@ -87,9 +89,13 @@ WSGI_APPLICATION = 'ticket_trackr.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tickettrackr',
+        'USER': 'loganleopold',
+        'PASSWORD': 'stick2it',
+        'HOST': '',
+        'PORT': '',
+    },
 }
 
 REACT_ROUTES = [
@@ -139,9 +145,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = (
-         'http://localhost:3000'
-     )
+    'http://localhost:3000'
+)
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
-#saved for working build 03/19/19 1:16pm
+# saved for working build 03/19/19 1:16pm

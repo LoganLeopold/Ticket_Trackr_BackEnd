@@ -26,15 +26,10 @@ react_routes = getattr(settings, 'REACT_ROUTES', [])
 
 router = routers.DefaultRouter()                    
 router.register(r'test', views.TestView, 'test')
+router.register(r'country', views.CountryView, 'country')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    # re_path(r'^.*/', TemplateView.as_view(template_name="base-react.html"), name='base'),
-    path('airports/', include('ticket_trackr_app.urls')),    
+    path('countries/', include('ticket_trackr_app.urls'))
 ]
-
-# for route in react_routes:
-#     urlpatterns += [
-#         path('{}'.format(route), TemplateView.as_view(template_name='index.html'))
-#     ]
