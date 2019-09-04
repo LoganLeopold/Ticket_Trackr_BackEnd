@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from rest_framework import viewsets
 from rest_framework import renderers
@@ -40,7 +40,8 @@ def StoreCountries(request):
     countries_data = response.json()
 
     for country in countries_data['Countries']:
-        country = CountryModel.object.create(Name=country.Name, Code=country.Code)
+        print(country)
+        country = CountryModel.objects.create(Name=country['Name'], Code=country['Code'])
     
     return redirect('countrylist')
 
