@@ -14,4 +14,4 @@ class AirportSerializer(serializers.ModelSerializer):
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = CountryModel
-        fields = ("Code", "Name")
+        fields = ('Code', 'Name')

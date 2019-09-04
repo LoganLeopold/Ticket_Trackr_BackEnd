@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
   path('search/', views.CountryList, name='countrylist'),
-  path('search/all', views.StoreCountries)
+  path('search/all', views.CheckAPI)
 ]
 
