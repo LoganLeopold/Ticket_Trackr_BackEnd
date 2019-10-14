@@ -62,6 +62,10 @@ def saveCountries(request):
     for country in countries_data['Countries']:
         print(country['Code'])
 
-    return JsonResponse(countries_data, safe=False, content_type='text/html')
-    # return JsonResponse(serializer.data, safe=False, content_type='text/html')
+    for country in countries_data['Countries']:
+      country = CountryModel.objects.create(Name=country['Name'], Code=country['Code'])
+      country.save()
+
+    return redirect('countrylist')
+    # return JsonResponse(countreis_data, safe=False, content_type='text/html')
     

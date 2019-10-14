@@ -33,3 +33,16 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('countries/', include('ticket_trackr_app.urls'))
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
