@@ -9,6 +9,10 @@ import requests
 import os
 
 RAPID_KEY = os.environ.get("RAPIDAPI")
+AVIATIONEDGE = os.environ.get("AVIATIONEDGE")
+
+
+# ________ COUNTRY VIEWS __________ 
 
 # simple country view to test database
 def CountryList(request):
@@ -64,3 +68,23 @@ def saveCountries(request):
     return redirect('countrylist')
     # return JsonResponse(countreis_data, safe=False, content_type='text/html')
     
+
+
+# ________ AIRPORT VIEWS __________ 
+
+def checkAirportAPI (request):
+
+    url = 'https://aviation-edge.com/v2/public/airportDatabase?key=f72fb6-fa98fc'
+
+    # headers = {
+    #     'x-rapidapi-host': "montanaflynn-Airports-v1.p.rapidapi.com",
+    #     'x-rapidapi-key': RAPID_KEY,
+    #     }
+
+    response = requests.request("GET", url)
+    # , headers=headers)
+
+    airport_data = response.json()
+    print(AVIATIONEDGE)
+
+    return JsonResponse(airport_data, safe=False, content_type='text/html')

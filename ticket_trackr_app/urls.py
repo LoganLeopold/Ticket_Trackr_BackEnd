@@ -6,6 +6,6 @@ urlpatterns = [
   path('countries/search/all', views.CheckAPI),
   path('countries/db/test', views.saveCountries),
 
-  # path('airports/search/', views.)
+  path('airports/search/', views.checkAirportAPI),
 ]
 
