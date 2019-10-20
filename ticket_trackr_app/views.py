@@ -2,26 +2,24 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from rest_framework import viewsets, renderers, serializers
 from rest_framework.response import Response
-from .serializers import TestSerializer, AirportSerializer, CountrySerializer
-from .models import TestModel, AirportModel, CountryModel
+from .serializers import AirportSerializer, CountrySerializer
+from .models import AirportModel, CountryModel
 import json
 import requests
 import os
 
 RAPID_KEY = os.environ.get("RAPIDAPI")
 
-class TestView(viewsets.ModelViewSet):
-    serializer_class = TestSerializer
-    queryset = TestModel.objects.all()
-
-class CountryView(viewsets.ModelViewSet):
-    serializer_class = CountrySerializer
-    queryset = CountryModel.objects.all()
-
 # simple country view to test database
 def CountryList(request):
     countries = CountryModel.objects.all()
-    return render(request, 'countries.html', {'countries': countries})
+    serializer = CountrySerializer(countries, many=True)
+    response = JsonResponse(serializer.data, safe=False, content_type='text/html')
+    response["Access-Control-Allow-Origin"] = "http://localhost:3000"
+    return response 
+    # return render(request, 'countries.html', {'countries': serializer.data})
+
+
 
 #Get API response
 def CheckAPI(request):
@@ -40,6 +38,8 @@ def CheckAPI(request):
     return JsonResponse(data, safe=False, content_type='text/html')
 
 
+
+
 #Put API results in DB
 def saveCountries(request): 
 
@@ -51,11 +51,6 @@ def saveCountries(request):
         }
 
     response = requests.request("GET", url, headers=headers)
-
-    # serializer = CountrySerializer(query, many=True)
-
-    # for country in serializer.data:
-    #     print(country['Code'])
 
     countries_data = response.json()
 
