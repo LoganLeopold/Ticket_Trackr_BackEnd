@@ -85,6 +85,15 @@ def checkAirportAPI (request):
     # , headers=headers)
 
     airport_data = response.json()
-    print(AVIATIONEDGE)
+    count = 0
 
-    return JsonResponse(airport_data, safe=False, content_type='text/html')
+    for airport in airport_data:
+        if count <= 100:
+            print(airport['nameCountry'])
+            count += 1
+
+    oneairport = airport_data[0]['nameCountry']
+
+    print(oneairport)
+
+    return JsonResponse(oneairport, safe=False, content_type='text/html')

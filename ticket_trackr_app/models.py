@@ -40,4 +40,17 @@ class AirportModel(models.Model):
    weatherUrl = models.URLField(),
    delayIndexUrl = models.URLField()
 
-
+# class AEAirportModel(models.model):
+#     airportId: 
+#     nameAirport: 
+#     codeIataAirport: 
+#     codeIcaoAirport: 
+#     latitudeAirport: 
+#     longitudeAirport: 
+#     geonameId: 
+#     timezone: 
+#     GMT: 
+#     phone: 
+#     nameCountry: 
+#     codeIso2Country: 
+#     codeIataCity: 
