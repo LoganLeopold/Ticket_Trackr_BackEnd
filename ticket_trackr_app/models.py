@@ -11,7 +11,7 @@ class TestModel(models.Model):
     test = models.TextField()
 
 class AirportModel(models.Model):
-    Id = models.IntegerField(),
+    Id = models.TextField(),
     Name = models.TextField(),
     IataCode = models.TextField(),
     IcaoCode = models.TextField(),
