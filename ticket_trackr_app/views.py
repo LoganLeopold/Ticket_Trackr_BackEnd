@@ -13,18 +13,6 @@ AVIATIONEDGE = os.environ.get("AVIATIONEDGE")
 
 
 # ________ COUNTRY VIEWS __________ 
-
-# simple country view to test database
-def CountryList(request):
-    countries = CountryModel.objects.all()
-    serializer = CountrySerializer(countries, many=True)
-    response = JsonResponse(serializer.data, safe=False, content_type='text/html')
-    response["Access-Control-Allow-Origin"] = "http://localhost:3000"
-    return response 
-    # return render(request, 'countries.html', {'countries': serializer.data})
-
-
-
 #Get API response
 def CheckAPI(request):
 
@@ -40,8 +28,6 @@ def CheckAPI(request):
     print(RAPID_KEY)
     data = response.json()
     return JsonResponse(data, safe=False, content_type='text/html')
-
-
 
 
 #Put API results in DB
@@ -69,6 +55,16 @@ def saveCountries(request):
     # return JsonResponse(countreis_data, safe=False, content_type='text/html')
     
 
+# simple country view to test database
+def CountryList(request):
+    countries = CountryModel.objects.all()
+    serializer = CountrySerializer(countries, many=True)
+    response = JsonResponse(serializer.data, safe=False, content_type='text/html')
+    response["Access-Control-Allow-Origin"] = "http://localhost:3000"
+    return response 
+    # return render(request, 'countries.html', {'countries': serializer.data})
+    
+
 
 # ________ AIRPORT VIEWS __________ 
 
@@ -76,13 +72,7 @@ def checkAirportAPI (request):
 
     url = 'https://aviation-edge.com/v2/public/airportDatabase?key=f72fb6-fa98fc'
 
-    # headers = {
-    #     'x-rapidapi-host': "montanaflynn-Airports-v1.p.rapidapi.com",
-    #     'x-rapidapi-key': RAPID_KEY,
-    #     }
-
     response = requests.request("GET", url)
-    # , headers=headers)
 
     airport_data = response.json()
     count = 0
@@ -92,8 +82,37 @@ def checkAirportAPI (request):
             print(airport['nameCountry'])
             count += 1
 
-    oneairport = airport_data[0]['nameCountry']
+    oneairport = airport_data[10]
+    # ['nameCountry']
 
     print(oneairport)
 
     return JsonResponse(oneairport, safe=False, content_type='text/html')
+
+
+#Put API results in DB
+def saveAirports(request): 
+
+    url = "https://aviation-edge.com/v2/public/airportDatabase?key=f72fb6-fa98fc"
+
+    response = requests.request("GET", url)
+
+    airports_data = response.json()
+
+    # airports = []
+    # for airport in airports_data:
+    #     airports.append(airport['nameAirport'])
+
+    for airport in airports_data:
+      airport = AirportModel.objects.create(
+        Id=airport['airportId'],
+        Name=airport['nameAirport'],
+        IataCode=airport['codeIataAirport'],
+        IcaoCode=airport['codeIcaoAirport'],
+        CountryName=airport['nameCountry'],
+        CountryCode=airport['codeIso2Country'],
+        CityCode=airport['codeIataCity'],
+      )
+      country.save()
+
+    return JsonResponse(airports, safe=False, content_type='text/html')
