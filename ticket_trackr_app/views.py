@@ -2,14 +2,17 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from rest_framework import viewsets, renderers, serializers
 from rest_framework.response import Response
-from .serializers import AirportSerializer, CountrySerializer
-from .models import AirportModel, CountryModel
+from .serializers import CountrySerializer
+#, AirportSerializer, 
+from .models import  CountryModel
+# AirportModel,
 import json
 import requests
 import os
 
 RAPID_KEY = os.environ.get("RAPIDAPI")
-AVIATIONEDGE = os.environ.get("AVIATIONEDGE")
+# AVIATIONEDGE = os.environ.get("AVIATIONEDGE")
+AVIATIONEDGE = os.environ.get("aviationedgekey")
 
 
 # ________ COUNTRY VIEWS __________ 
@@ -53,7 +56,7 @@ def saveCountries(request):
 
     return redirect('countrylist')
     # return JsonResponse(countreis_data, safe=False, content_type='text/html')
-    
+
 
 # simple country view to test database
 def CountryList(request):
@@ -70,24 +73,26 @@ def CountryList(request):
 
 def checkAirportAPI (request):
 
-    url = 'https://aviation-edge.com/v2/public/airportDatabase?key=f72fb6-fa98fc'
+    url = 'https://aviation-edge.com/v2/public/airportDatabase?key=%s' % AVIATIONEDGE
+
+    print(AVIATIONEDGE)
 
     response = requests.request("GET", url)
 
     airport_data = response.json()
     count = 0
 
-    for airport in airport_data:
-        if count <= 100:
-            print(airport['nameCountry'])
-            count += 1
+    # for airport in airport_data:
+    #     if count <= 100:
+    #         print(airport['nameCountry'])
+    #         count += 1
 
-    oneairport = airport_data[10]
+    # oneairport = airport_data[0]
     # ['nameCountry']
 
-    print(oneairport)
+    # print(oneairport)
 
-    return JsonResponse(oneairport, safe=False, content_type='text/html')
+    return JsonResponse(airport_data, safe=False, content_type='text/html')
 
 
 #Put API results in DB
@@ -113,6 +118,6 @@ def saveAirports(request):
         CountryCode=airport['codeIso2Country'],
         CityCode=airport['codeIataCity'],
       )
-      country.save()
+      airport.save()
 
     return JsonResponse(airports, safe=False, content_type='text/html')
