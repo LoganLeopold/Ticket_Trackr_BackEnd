@@ -36,7 +36,7 @@ RDS_ENDPOINT = environ.get('rdsEndpoint')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'tickettrackr.herokuapp.com']
 
 
 # Application definition
@@ -150,6 +150,6 @@ CORS_ORIGIN_WHITELIST = (
     'ticket-trackr.surge.sh',
 )
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 # saved for working build 03/19/19 1:16pm
