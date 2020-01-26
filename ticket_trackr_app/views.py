@@ -29,7 +29,7 @@ def CheckAPI(request):
 
     response = requests.request("GET", url, headers=headers)
 
-    print(RAPID_KEY)
+    print(RAPID_KEY, "countries/search/third rapidapi key")
     data = response.json()
     return JsonResponse(data, safe=False, content_type='text/html')
 
