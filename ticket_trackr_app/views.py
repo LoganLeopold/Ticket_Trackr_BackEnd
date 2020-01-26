@@ -17,6 +17,7 @@ AVIATIONEDGE = os.environ.get("aviationedgekey")
 
 # ________ COUNTRY VIEWS __________ 
 #Get API response
+#countries/search/third
 def CheckAPI(request):
 
     url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/reference/v1.0/countries/en-US"
@@ -34,6 +35,7 @@ def CheckAPI(request):
 
 
 #Put API results in DB
+#countries/db/save
 def saveCountries(request): 
 
     url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/reference/v1.0/countries/en-US"
@@ -59,6 +61,7 @@ def saveCountries(request):
 
 
 # simple country view to test database
+#countries/search/db
 def CountryList(request):
     countries = CountryModel.objects.all()
     serializer = CountrySerializer(countries, many=True)
@@ -70,7 +73,7 @@ def CountryList(request):
 
 
 # ________ AIRPORT VIEWS __________ 
-
+#airports/search/third
 def checkAirportAPI (request):
 
     url = 'https://aviation-edge.com/v2/public/airportDatabase?key=%s' % AVIATIONEDGE
@@ -96,6 +99,7 @@ def checkAirportAPI (request):
 
 
 #Put API results in DB
+#airports/db/save
 def saveAirports(request): 
 
     url = "https://aviation-edge.com/v2/public/airportDatabase?key=f72fb6-fa98fc"

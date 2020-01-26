@@ -25,7 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # config = RawConfigParser()
 # config.read('.settings.ini')
 
-SECRET_KEY = environ.get('TICKET_TRACKR_SECRET_KEY')
+# SECRET_KEY = environ.get('TICKET_TRACKR_SECRET_KEY')
+SECRET_KEY = '%tc!wply9geoph+y$&%%b0%k@2-4t0=z$t!_k)9rraif#d^u%t'
 RDS_USER = environ.get('rdsUser')
 RDS_PW = environ.get('rdsPassword')
 RDS_ENDPOINT = environ.get('rdsEndpoint')
