@@ -10,9 +10,9 @@ import json
 import requests
 import os
 
-RAPID_KEY = os.environ.get("RAPIDAPI")
+# RAPID_KEY = os.environ.get("RAPIDAPI")
 # AVIATIONEDGE = os.environ.get("AVIATIONEDGE")
-AVIATIONEDGE = os.environ.get("aviationedgekey")
+# AVIATIONEDGE = os.environ.get("aviationedgekey")
 
 
 # ________ COUNTRY VIEWS __________ 
