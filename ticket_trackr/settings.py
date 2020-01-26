@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-import django_heroku
+import django-heroku
 from configparser import RawConfigParser
 import os
 from os import environ
@@ -150,6 +150,6 @@ CORS_ORIGIN_WHITELIST = (
     'ticket-trackr.surge.sh',
 )
 
-django_heroku.settings(locals())
+django-heroku.settings(locals())
 
 # saved for working build 03/19/19 1:16pm
