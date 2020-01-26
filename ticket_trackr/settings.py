@@ -150,6 +150,6 @@ CORS_ORIGIN_WHITELIST = (
     'ticket-trackr.surge.sh',
 )
 
-django-heroku.settings(locals())
+django_heroku.settings(locals())
 
 # saved for working build 03/19/19 1:16pm
