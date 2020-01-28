@@ -7,8 +7,8 @@ urlpatterns = [
   path('countries/search/db', views.CountryList, name='countrylist'),
 
   path('airports/search/third', views.checkAirportAPI),
-  path('airports/db/save', views.saveAirports)
-  # Search our db on this line
+  # path('airports/db/save', views.saveAirports)
+  path('airports/search/db', views.AirportList, name='airportlist')
 ]
 
 
