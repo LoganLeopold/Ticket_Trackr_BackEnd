@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from rest_framework import viewsets, renderers, serializers
 from rest_framework.response import Response
-from .serializers import CountrySerializer
+from .serializers import CountrySerializer, AirportSerializer
 #, AirportSerializer, 
-from .models import  CountryModel
+from .models import  CountryModel, AirportModel
 # AirportModel,
 import json
 import requests
@@ -125,3 +125,12 @@ def saveAirports(request):
       airport.save()
 
     return JsonResponse(airports, safe=False, content_type='text/html')
+
+# simple airport view to test database
+#countries/search/db
+def AirportList(request):
+    airports = AirpotModel.objects.all()
+    serializer = AirportSerializer(airports, many=True)
+    response = JsonResponse(serializer.data, safe=False, content_type='text/html')
+    response["Access-Control-Allow-Origin"] = "http://localhost:3000"
+    return response
