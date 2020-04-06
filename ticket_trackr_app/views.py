@@ -75,7 +75,6 @@ def checkAirportAPI (request):
     url = 'https://aviation-edge.com/v2/public/airportDatabase?key=%s' % AVIATIONEDGE
 
     print(AVIATIONEDGE)
-    print(os.environ.get('rdsUser'))
 
     response = requests.request("GET", url)
 
@@ -99,7 +98,7 @@ def checkAirportAPI (request):
 #airports/db/save
 def saveAirports(request): 
 
-    url = "https://aviation-edge.com/v2/public/airportDatabase?key=f72fb6-fa98fc"
+    url = 'https://aviation-edge.com/v2/public/airportDatabase?key=%s   ' % AVIATIONEDGE
 
     response = requests.request("GET", url)
 
@@ -119,9 +118,11 @@ def saveAirports(request):
         CountryCode=airport['codeIso2Country'],
         CityCode=airport['codeIataCity'],
       )
+
       airport.save()
 
-    return JsonResponse(airports, safe=False, content_type='text/html')
+    # return JsonResponse(airports_data, safe=False, content_type='text/html')
+    return redirect('airportslist')
 
 # simple airport view to test database
 #airports/search/db

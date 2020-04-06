@@ -11,13 +11,13 @@ class TestModel(models.Model):
     test = models.TextField()
 
 class AirportModel(models.Model):
-    Id = models.TextField(default="placeholder")
-    Name = models.TextField(default="placeholder")
-    IataCode = models.TextField(default="placeholder")
-    IcaoCode = models.TextField(default="placeholder")
-    CountryName = models.TextField(default="placeholder")
-    CountryCode = models.TextField(default="placeholder")
-    CityCode = models.TextField(default="placeholder")
+    Id = models.TextField(default="placeholder", null=True, blank=True)
+    Name = models.TextField(default="placeholder", null=True, blank=True)
+    IataCode = models.TextField(default="placeholder", null=True, blank=True)
+    IcaoCode = models.TextField(default="placeholder", null=True, blank=True)
+    CountryName = models.TextField(default="placeholder", null=True, blank=True)
+    CountryCode = models.TextField(default="placeholder", null=True, blank=True)
+    CityCode = models.TextField(default="placeholder", null=True, blank=True)
 
 """
 ____ Establishing DB Airports ____ 
