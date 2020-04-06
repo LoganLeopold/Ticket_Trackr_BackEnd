@@ -19,16 +19,16 @@ class AirportModel(models.Model):
     CountryCode = models.TextField(default="placeholder", null=True, blank=True)
     CityCode = models.TextField(default="placeholder", null=True, blank=True)
 
-"""
-____ Establishing DB Airports ____ 
 
-1 .The cities have airports in them, so build city model:
--City Name
--City IATA Code
--Airports Array
+#____ Establishing DB Airports ____ 
 
-2. Get airports and programmatically add them to cities:
--Get city objects
--For each airport, if the city code is equal to a city IATA code record, relate the airport to the City with a foreign key
+#1 .The cities have airports in them, so build city model:
+#-City Name
+#-City IATA Code
+#-Airports Array
 
-""" 
+#2. Get airports and programmatically add them to cities:
+#-Get city objects
+#-For each airport, if the city code is equal to a city IATA code record, relate the airport to the #City with a foreign key
+
+
