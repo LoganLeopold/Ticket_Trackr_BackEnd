@@ -10,8 +10,6 @@ import os
 
 RAPID_KEY = os.environ.get("RAPIDAPI")
 AVIATIONEDGE = os.environ.get("AVIATIONEDGE")
-# AVIATIONEDGE = os.environ.get("aviationedgekey")
-
 
 # ________ COUNTRY VIEWS __________ 
 #Get API response
@@ -77,6 +75,7 @@ def checkAirportAPI (request):
     url = 'https://aviation-edge.com/v2/public/airportDatabase?key=%s' % AVIATIONEDGE
 
     print(AVIATIONEDGE)
+    print(os.environ.get('rdsUser'))
 
     response = requests.request("GET", url)
 
