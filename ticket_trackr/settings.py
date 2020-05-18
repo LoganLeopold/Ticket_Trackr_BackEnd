@@ -13,6 +13,7 @@ import django_heroku
 from configparser import RawConfigParser
 import os
 from os import environ
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -97,7 +98,9 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     },
-}
+}   
+
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 REACT_ROUTES = [
     'login',
@@ -153,3 +156,4 @@ CORS_ORIGIN_WHITELIST = (
 django_heroku.settings(locals())
 
 # saved for working build 03/19/19 1:16pm
+

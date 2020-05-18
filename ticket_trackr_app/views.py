@@ -63,7 +63,7 @@ def CountryList(request):
     serializer = CountrySerializer(countries, many=True)
     response = JsonResponse(serializer.data, safe=False, content_type='text/html')
     response["Access-Control-Allow-Origin"] = "http://localhost:3000"
-    response["Access-Control-Allow-Oirign"] = "https://ticket-trackr.surge.sh/"
+    response["Access-Control-Allow-Oirign"] = ""
     return response 
     # return render(request, 'countries.html', {'countries': serializer.data})
     
