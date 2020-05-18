@@ -50,7 +50,7 @@ def saveCountries(request):
 
     for country in countries_data['Countries']:
       country = CountryModel.objects.create(Name=country['Name'], Code=country['Code'])
-      country.save()
+    #   country.save()
 
     return redirect('countrylist')
     # return JsonResponse(countreis_data, safe=False, content_type='text/html')
