@@ -11,6 +11,10 @@ import os
 RAPID_KEY = os.environ.get("RAPIDAPI")
 AVIATIONEDGE = os.environ.get("AVIATIONEDGE")
 
+# ________ GENERAL __________ 
+def apiHome(request):
+    return JsonResponse('API Home', safe=False, content_type="text/html")
+
 # ________ COUNTRY VIEWS __________ 
 #Get API response
 #countries/search/third
@@ -81,16 +85,6 @@ def checkAirportAPI (request):
 
     airport_data = response.json()
     count = 0
-
-    # for airport in airport_data:
-    #     if count <= 100:
-    #         print(airport['nameCountry'])
-    #         count += 1
-
-    # oneairport = airport_data[0]
-    # ['nameCountry']
-
-    # print(oneairport)
 
     return JsonResponse(airport_data, safe=False, content_type='text/html')
 
